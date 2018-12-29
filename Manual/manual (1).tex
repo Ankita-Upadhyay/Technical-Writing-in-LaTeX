@@ -1,0 +1,220 @@
+\documentclass[11pt,twocolumn]{article}
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{verbdef}
+\usepackage{spverbatim}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{csquotes}
+\graphicspath{ {images/} }
+\usepackage[rightcaption]{sidecap}
+\usepackage[parfill]{parskip}
+\usepackage{wrapfig}
+
+\title{\LaTeX\ Manual}
+\author{Ankita Upadhyay }
+\date{October 2018}
+\newline
+
+
+\begin{document}
+
+\maketitle
+
+\section{\LaTeX Tutorial} 
+ 
+This \LaTeX\ manual educates users on utilizing basic functions of \LaTeX\ including document classes, rendering mathematical formulas, and including graphics using the designated graphics package.
+\\
+ 
+\LaTeX\ is a document preparation system that is used for rendering scholarly articles, journals, and other formal documents.\ \LaTeX\ does not follow the WYSIWYG format like Microsoft Word, for instance.
+Users have to type and compile the code before they can see the output of their \LaTeX\ code.
+\\
+ 
+Some features this \LaTeX\ manual includes are: 
+ 
+\begin{itemize}
+  \item Three document classes including article, book, and report. 
+  \item Typing out and formatting mathematical formulas in a formal manner as seen in math textbooks.
+  \item Being able to know how to create sections, subsections, sub-subsections, and label them as well.
+\end{itemize}
+
+\section{Features}
+
+\subsection{Document Classes}
+
+Document classes dictate the type of article the user intends to write. For instance, a user might want to produce an article, book, journal, or report. In order for them to specify what type of document they want to render, users must follow the following format:
+
+\thinspace
+\begin{spverbatim}
+\documentclass[options]{class}
+\end{spverbatim}
+\thinspace
+
+\begin{itemize}
+    \item \textbf{Class} indicates the type of document the user wishes to create. Some examples include book, letter, memoir and slide.
+    \item \textbf{Options} indicate layout and formatting settings including but not limited to font, column size, landscape mode, and number of page sides (single or double). 
+\end{itemize}
+
+\subsubsection{The Article Class}
+The \textbf{article} class consists of font size and indicates the number of columns. It can also include paper size specifications - A4 is one example.~\cite{latexmanual} \\For instance, this document defines an article class with an 11 point font and two columns as shown:
+
+\thinspace
+\begin{spverbatim}
+\documentclass[11pt,twocolumn]{article}
+\end{spverbatim}
+\thinspace
+
+This formats the paper into two parallel, vertical columns with an 11 point font. 
+
+\subsubsection{The Book Class}
+The \textbf{book} class is double sided by default and can be divided into parts, chapters, sections, and paragraphs. In a book, the section names are found on odd pages, the chapter names on even pages, and a page number header is automatically added.  
+Here is how one would type the book class:
+
+\thinspace
+\begin{spverbatim}
+\documentclass[11pt]{book}
+\end{spverbatim}
+\thinspace
+
+\subsubsection{The Report Class}
+A report is a smaller version of a book and contains parts, chapters, subsections, and sub-subsections.
+In a report, one can specify the font size, the number of sides, the type of printer paper, and the number of columns - to name a few characteristics. Here are some document class options one can use for a report:
+
+\thinspace
+\begin{spverbatim}
+\documentclass[11pt,twoside]{report}
+\end{spverbatim}
+\thinspace
+
+\subsection{Mathematical Formulas}
+
+To be able to write out mathematical formulas, one must include a math package like so:
+\thinspace
+\begin{spverbatim}
+\usepackage{amsmath}
+\end{spverbatim}
+\thinspace
+
+This package imports features that are needed to write out mathematical formulas in an organized, professional manner with great typographical quality.
+\\
+There are two ways of displaying mathematical formulas. One way is to do it in the \emph{display} format where the equations are isolated from its surrounding text and the other is \emph{inline} where the equations are embedded within the text.
+
+\subsubsection*{Inline Mode}
+Inline mode allows math equations to be written alongside text as shown in the example below:
+
+\begin{spverbatim}
+"We will be discussing the formula for energy, which can be written as $E = mc^2$." 
+\end{spverbatim}
+has the output: 
+\\
+
+We will be discussing the formula for energy, which can be written as $E = mc^2$.
+
+\subsubsection*{Display Mode}
+Display mode separates mathematical equations from text by giving the equations its own distinct space.~\cite{abramowitz1972handbook} This is done by using the equation environment. For instance:
+
+\begin{spverbatim}
+Probability and statistics have several applications and theorems to derive the outcome of an event. One such theorem is the binomial theorem:
+\begin{equation}
+(x+y)^n = \sum_{k=0}^{n} {{n}\choose{k}} x^k y^{n-k}
+for the function"  
+\end{equation}
+where n is the number of trials and k is the number of successes among trials.
+\end{spverbatim}
+has the output:
+\\
+
+Probability and statistics have several applications and theorems to derive the outcome of an event. One such theorem is the binomial theorem:
+\begin{equation}
+    (x+y)^n = \sum_{k=0}^{n} {{n}\choose{k}} x^k y^{n-k}
+\end{equation}
+where n is the number of trials and k is the number of successes among trials.
+
+ 
+
+\subsection{Sections, Subsections, Subsubsections, and their Labeling}
+Manuals, articles, and other \LaTeX\ documents are structured into sections, subsections, and subsubsections for better organization and readability. Labeling each of these sections allows users to reference anything that is already numbered, such as figures or sections.   
+
+Here is the syntax for rendering a section, subsection, subsubsection, and labels:
+
+\begin{spverbatim}
+\section{}
+
+\subsection{}
+
+\subsubsection{} \label{sec:text}
+\end{spverbatim} 
+
+
+The title of the section, subsection, or subsubsection goes inside the curly braces. In terms of ordering, the section, subsection, and subsubsection would be numbered 1,1.1,1.1.1, respectively. 
+In order to avoid numbering the sections one can type: \begin{spverbatim}
+\section*{...}
+\end{spverbatim} 
+
+In terms of the labeling, let's suppose the subsubsection in the aforementioned example had was numbered 1.1.1. If the user writes text at a later point in the document where they want to refer to the section labeled 1.1.1, all they would have to write would be:  
+\begin{spverbatim}
+\ref{sec:text} 
+\end{spverbatim}
+and it would display 1.1.1 within a sentence without having to actually write out the number of the subsubsection it is referring to. 
+
+
+\section{Bibliography/Citations}
+Whether it be a senior thesis, research paper, journal, or article, it is vital to have a proper bibliography and corresponding citations from credible sources. Users can utilize the \verb!thebibliography! environment that is placed before the \verb!\end{document}! command. 
+
+In order to add and cite a reference, one can use the \verb!\bibitem{...}! and \verb!\cite{citation1, citation2,...}!, respectively. The former command allows the user to label the entry in a way that makes citation easier. The arguments in the latter command refer to the bibliographical sources stored in the \verb!\bibitem{...}! command. 
+
+Users can also utilize BiBteX which uses a .bib file to to store the references by using the \verb!\bibliography{filename}! command. This imports the corresponding .bib file. Users can use the \verb!\cite{citation1, citation2,...}! to cite references as well. 
+
+Users can store references which have records and fields with the \verb!@type{....}! command. The type indicates whether the document is an article, book, journal, etc. The fields within a record depend on the type of document. For instance, a book would have author, year, title, publisher, and the address field. An example of a book record is:
+
+\begin{spverbatim}
+  @book{xie2016dynamic,
+    title={Dynamic Documents with R},
+    author={Xie, Yihui},
+    year={2016},
+    publisher={Chapman and Hall/CRC}
+  }
+\end{spverbatim}
+
+
+
+
+\section{Footnotes}
+Footnotes are located at the bottom of a page and comment on or cite references to a particular aspect of the text above it. Footnotes help clarify and/or provide more insight on a certain text or topic. Following is the syntax for a footnote:
+
+  \begin{spverbatim}
+  This is the first footnote.
+  \footnote[23]{good footnotes!}
+  \end{spverbatim}
+  
+The bottom line indicates the content that will go into the footnote that corresponds to the top line. 
+
+\section{Bibliography/References}
+
+  \begin{thebibliography}{3}
+  \bibitem{latexmanual} 
+   L. Lamport. 
+  \textit{LATEX: A Document Preparation System: User's Guide and Reference Manual}. Addison-Wesley, 1994. 
+  
+  \bibitem{abramowitz1972handbook}
+  Abramowitz, Milton and Stegun, Irene A and others.
+  \textit{Handbook of Mathematical Functions: With Formulas, Graphs, and Mathematical Tables}. Dover Publications, New York, 1972. 
+  \end{thebibliography}
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+ 
+
+\end{document}
